@@ -8,7 +8,7 @@ export class DataService {
 
   private vegetableList:Vegetable[] = [];
   private shoppingBag:VegetableSummary[] = [];
-
+  public count:number = 0;
 
 
   constructor() {
@@ -29,9 +29,25 @@ export class DataService {
     } else {
       result[0].increaseAmount();
     }
-
+    this.count++;
 
   }
+  removeFromBag(vegSum:VegetableSummary) {
+    console.log("remove this vegetable" + vegSum.vegtable.name);
+    if(vegSum.amount > 1) {
+      vegSum.reduceAmount();
+      //vegSum.amount--;
+    } else {
+      let index = this.shoppingBag.indexOf(vegSum);
+      if (index > -1) {
+        this.shoppingBag.splice(index, 1);
+      }
+    }
+    this.count--;
+
+  }
+
+
   getVegetablesList():Vegetable[] {
     return this.vegetableList;
   }

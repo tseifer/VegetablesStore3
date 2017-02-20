@@ -15,6 +15,9 @@ export class VegetableSummary {
   increaseAmount() {
     this.amount++;
   }
+  reduceAmount() {
+    this.amount--;
+  }
 
 
 

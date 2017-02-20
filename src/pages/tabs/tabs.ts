@@ -18,7 +18,7 @@ export class TabsPage {
 
   count:number = 0;
 
-  constructor() {
+  constructor(public ds:DataService) {
     //ds.count;
   }
 }

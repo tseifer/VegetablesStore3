@@ -25,14 +25,19 @@ export class ShoppingBagPage {
   }
   ionViewDidEnter() {
     this.shoppingBag = this.dataService.getShoppingBag();
-    this.totalPrice = this.shoppingBag.reduce((total, vegSummary) => {
-      return total + (vegSummary.vegtable.price * vegSummary.amount);
-    }, 0);
+    this.updateTotalPrice();
 
     // let total = 0; for (let v of this.shoppingBag) {total = total + v.price}}
   }
+  private updateTotalPrice() {
+    this.totalPrice = this.shoppingBag.reduce((total, vegSummary) => {
+      return total + (vegSummary.vegtable.price * vegSummary.amount);
+    }, 0);
+  }
 
-  onRemove(vegToRemove:Vegetable) {
+  onRemove(vegToRemove:VegetableSummary) {
+    this.dataService.removeFromBag(vegToRemove);
+    this.updateTotalPrice()
 
   }
 
