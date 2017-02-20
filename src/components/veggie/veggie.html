@@ -1,0 +1,13 @@
+
+{{vegg.name}}
+<img [src]="vegg.imageUrl">
+
+<div>
+  <button ion-fab mini (click)="addWasClicked()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <button ion-button outline item-right icon-left (click)="detailsWasClicked()">
+    <ion-icon name="briefcase"></ion-icon>
+    Details
+  </button>
+</div>
