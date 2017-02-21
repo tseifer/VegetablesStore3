@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Vegetable} from "../models/Vegetable";
 import {VegetableSummary} from "../models/VegetableSummary";
-
+import {Jsonp} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DataService {
@@ -10,8 +11,10 @@ export class DataService {
   private shoppingBag:VegetableSummary[] = [];
   public count:number = 0;
 
+  private urlOfWeather:string = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/212474?apikey=QpsSZ3xmagRHDOBP1GhTigwFgtqIKeZk&callback=JSONP_CALLBACK";
+//  private urlOfWeather:string = "https://itunes.apple.com/search?term=${search}&limit=100&callback=JSONP_CALLBACK";
 
-  constructor() {
+  constructor(private jsonp:Jsonp) {
     this.vegetableList = [
       new Vegetable("tomato", 12, "red", "./assets/images/tomato.jpg"),
       new Vegetable("cucumber", 4, "green", "./assets/images/cucumber.jpg"),
@@ -57,5 +60,8 @@ export class DataService {
 
 
 
+  getWeather() {
+    return this.jsonp.get(this.urlOfWeather).toPromise();
+  }
 
 }

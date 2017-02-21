@@ -7,6 +7,8 @@ import {VegDetailsPage} from "../pages/veg-details/veg-details";
 import {ShoppingBagPage} from "../pages/shopping-bag/shopping-bag";
 import {DataService} from "../services/DataService";
 import {VeggieComponent} from "../components/veggie/veggie";
+import {WeatherPage} from "../pages/weather/weather";
+import {HttpModule, JsonpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,12 @@ import {VeggieComponent} from "../components/veggie/veggie";
     VegtableListPage,
     VegDetailsPage,
     ShoppingBagPage,
-    VeggieComponent
+    VeggieComponent,
+    WeatherPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -26,7 +30,8 @@ import {VeggieComponent} from "../components/veggie/veggie";
     TabsPage,
     VegtableListPage,
     VegDetailsPage,
-    ShoppingBagPage
+    ShoppingBagPage,
+    WeatherPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, DataService]
 })
