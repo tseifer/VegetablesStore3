@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DataService} from "../../services/DataService";
-import {Vegetable} from "../../models/Vegetable";
 import {VegetableSummary} from "../../models/VegetableSummary";
 
 /*

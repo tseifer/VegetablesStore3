@@ -16,6 +16,7 @@ export class WeatherPage {
 
   isRainy:boolean = false;
   weatherText:string = '';
+  allWeather:string ='';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ds:DataService) {}
 
@@ -26,6 +27,7 @@ export class WeatherPage {
   ionViewDidEnter() {
      this.ds.getWeather().then((data: any)=> {
        let response = data._body;
+       this.allWeather = JSON.stringify(response);
        console.log(JSON.stringify(response));
        this.weatherText = JSON.stringify(response.DailyForecasts[0].Day.IconPhrase);
      });
